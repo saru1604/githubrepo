@@ -15,7 +15,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - run: >
-       echo: "Hi github"
+       sudo echo: "Hi github"
     
 #     - name: Set up GNAT toolchain
 #       run: >
