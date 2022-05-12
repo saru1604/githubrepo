@@ -3,14 +3,10 @@ name: json
 on: [push]
 
 jobs:
-  hello_world_job:
+  build:
     runs-on: ubuntu-latest
-    name: A job to say hello
     steps:
-      - uses: actions/checkout@v2
-      - id: foo
-        uses: actions/action-hello-repo@v1
-        with:
-          who-to-greet: 'Mona the Octocat'
-      - run: echo random-number ${{ steps.foo.outputs.random-number }}
-        shell: bash
+      # This step checks out a copy of your repository.
+      - uses: actions/checkout@v3
+      # This step references the directory that contains the action.
+      - uses: ./.github/actions/hello-world-action
