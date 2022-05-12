@@ -1,18 +1,19 @@
 name: json
 
-on: [push]
+on:  
+  push:
+    branches: [ main ]
+  pull_request:
+        branches: [ main ] 
 
 jobs:   
     predeploy:
-       runs-on: ubuntu-latest
-        steps:
+       runs-on: ubuntu-latest       
+       steps:
       # This step checks out a copy of your repository.
-      - uses: actions/checkout@v3
-      
-      -name: 'pre-deployment'
-       id: pre-deployment
-       uses: ./.github/actions/hello-world-action/
-       with:
-          tla:- ${{ github.event.input.TLA }}
-      - run: echo "hello world"    
-      
+        - uses: actions/checkout@v3
+-name: 'pre-deployment'
+id: pre-deployment
+uses: ./.github/actions/hello-world-action/    
+        with:
+            tla:- ${{ github.event.input.TLA }}
