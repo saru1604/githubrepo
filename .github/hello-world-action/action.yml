@@ -1,0 +1,20 @@
+name: 'pre-deployment actions'
+description: 'this action triggers in another repo'
+author: 'Con'
+branding:
+  icon: 'arrow-right'
+  color: 'yellow'
+inputs:
+  tla:
+    description: "app TLA"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: saru
+      id: pre-deployment
+      shell: powershell
+      run: |-
+        dir
+        ./.github/scripts/pre-deployment.ps1 ${{ inputs.tla }}
+        write-Output "script success"
