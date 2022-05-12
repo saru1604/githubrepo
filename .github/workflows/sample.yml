@@ -2,12 +2,17 @@ name: json
 
 on: [push]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
+jobs:   
+    predeploy:
+       runs-on: ubuntu-latest
+        steps:
       # This step checks out a copy of your repository.
       - uses: actions/checkout@v3
+      
+      -name: 'pre-deployment'
+       id: pre-deployment
+       uses: ./.github/actions/hello-world-action/
+       with:
+          tla:- ${{ github.event.input.TLA }}
       - run: echo "hello world"    
-      # This step references the directory that contains the action.
-      - uses: ./.github/actions/hello-world-action
+      
