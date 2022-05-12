@@ -16,4 +16,4 @@ jobs:
         id: pre-deployment
         uses: ./.github/actions/hello-world-action/         
         with:
-              tla: ${{ github.event.input.TLA }}
+              tla: 'hi'
